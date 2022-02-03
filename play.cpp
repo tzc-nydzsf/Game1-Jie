@@ -145,7 +145,6 @@ void show() {
 }
 void gcc() {
 	now=0;
-	memset(chc,0,sizeof(chc));
 	for(int i=0;i<=20;++i) {
 		if(i==0)
 			if(pty>=6) chc[++now]=i;
@@ -181,12 +180,15 @@ void gcc() {
 	for(int i=1;i<=now;++i)
 		t[chc[i]]=old[ptc][pty].psb[chc[i]];
 	for(int i=1;i<=now;++i)
-		if(t[chc[i]]==0)
-			t[chc[i]]+=25;
+		if(old[ptc][pty].time[chc[i]]==0)
+			t[chc[i]]+=5;
 	for(int i=1;i<=now;++i)
-		for(int j=1;j<=t[chc[i]];++j)
-			chc2[++now2]=chc[i];
-	cc=chc2[rand()%now2+1];
+		now2+=t[chc[i]];
+	if(now2==0) {cc=chc[rand()%now+1];return;}
+	int res=rand()%now2+1;
+	for(int i=1;i<=now;++i)
+		if(res<=t[chc[i]]) {cc=chc[i];break;}
+		else res-=t[chc[i]];
 }
 void getdata() {
 	long long a,b,c,d;
