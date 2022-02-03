@@ -179,7 +179,7 @@ void gcc() {
 		t[chc[i]]=old[ptc][pty].psb[chc[i]];
 	for(int i=1;i<=now;++i)
 		if(old[ptc][pty].time[chc[i]]==0)
-			t[chc[i]]+=5;
+			t[chc[i]]+=50;
 	for(int i=1;i<=now;++i)
 		now2+=t[chc[i]];
 	if(now2==0) {cc=chc[rand()%now+1];return;}
