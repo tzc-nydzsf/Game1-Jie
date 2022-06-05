@@ -185,9 +185,11 @@ void gcc() {
 	int t[25];
 	for(int i=1;i<=now;++i)
 		t[chc[i]]=old[ptc][pty].psb[chc[i]];
-	for(int i=1;i<=now;++i)
+	for(int i=1;i<=now;++i) {
 		if(old[ptc][pty].time[chc[i]]==0)
-			t[chc[i]]+=5;
+			t[chc[i]]+=50;
+		t[chc[i]]=t[chc[i]]*t[chc[i]]+1;
+	}
 	for(int i=1;i<=now;++i)
 		now2+=t[chc[i]];
 	if(now2==0) {cc=chc[myrand(1,now)];return;}
@@ -226,7 +228,6 @@ void upd() {
 }
 void run() {
 	HideCurSor();
-	srand(time(0));
 	rule();
 	system("cls");
 	system("mode con cols=32 lines=30");
